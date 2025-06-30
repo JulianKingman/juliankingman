@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Julian Kingman - Software Developer",
-  description: "Software is Legos for adults. Personal portfolio of Julian Kingman.",
+  title: "Julian Kingman - Ascended Software",
+  description: "Personal portfolio of Julian Kingman.",
 };
 
 export default function RootLayout({
