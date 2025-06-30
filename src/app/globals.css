@@ -121,6 +121,95 @@
   }
 }
 
+/* Pixelated floating animation - 10 steps, up and down over 14 seconds */
+@keyframes pixelated-float {
+  0% { transform: translateY(0px); }
+  10% { transform: translateY(-4px); }
+  20% { transform: translateY(-8px); }
+  30% { transform: translateY(-12px); }
+  40% { transform: translateY(-16px); }
+  50% { transform: translateY(-20px); }
+  60% { transform: translateY(-16px); }
+  70% { transform: translateY(-12px); }
+  80% { transform: translateY(-8px); }
+  90% { transform: translateY(-4px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Shadow animation that gets fuzzier as character goes higher */
+@keyframes shadow-blur {
+  0% { 
+    transform: translateY(20px) scaleX(1);
+    filter: blur(6px);
+    opacity: 0.8;
+  }
+  10% { 
+    transform: translateY(24px) scaleX(0.95);
+    filter: blur(7px);
+    opacity: 0.75;
+  }
+  20% { 
+    transform: translateY(28px) scaleX(0.9);
+    filter: blur(8px);
+    opacity: 0.7;
+  }
+  30% { 
+    transform: translateY(32px) scaleX(0.85);
+    filter: blur(10px);
+    opacity: 0.65;
+  }
+  40% { 
+    transform: translateY(36px) scaleX(0.8);
+    filter: blur(12px);
+    opacity: 0.6;
+  }
+  50% { 
+    transform: translateY(40px) scaleX(0.75);
+    filter: blur(15px);
+    opacity: 0.5;
+  }
+  60% { 
+    transform: translateY(36px) scaleX(0.8);
+    filter: blur(12px);
+    opacity: 0.6;
+  }
+  70% { 
+    transform: translateY(32px) scaleX(0.85);
+    filter: blur(10px);
+    opacity: 0.65;
+  }
+  80% { 
+    transform: translateY(28px) scaleX(0.9);
+    filter: blur(8px);
+    opacity: 0.7;
+  }
+  90% { 
+    transform: translateY(24px) scaleX(0.95);
+    filter: blur(7px);
+    opacity: 0.75;
+  }
+  100% { 
+    transform: translateY(20px) scaleX(1);
+    filter: blur(6px);
+    opacity: 0.8;
+  }
+}
+
+.pixelated-float {
+  animation: pixelated-float 14s steps(10, end) infinite;
+}
+
+.floating-shadow {
+  animation: shadow-blur 14s steps(10, end) infinite;
+}
+
+.pixel-crisp {
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
 /* Custom animations and utilities */
 @layer utilities {
   .line-clamp-3 {
