@@ -54,7 +54,7 @@ export default function About() {
                 <div className="p-6 bg-black/20 backdrop-blur-sm rounded-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all duration-300">
                   <h2 className="text-2xl font-semibold text-amber-400 mb-4">The Journey</h2>
                   <p className="text-gray-300 leading-relaxed">
-                    I believe software development is like playing with Legos for adults – every project is an opportunity 
+                    I believe software development is like playing with Legos – every project is an opportunity 
                     to build something meaningful from individual pieces. With a passion for clean code and innovative solutions, 
                     I craft digital experiences that make a difference.
                   </p>

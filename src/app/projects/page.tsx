@@ -92,11 +92,11 @@ export default function Projects() {
                 
                 {/* Content */}
                 <div className="relative z-10">
-                  <div className="mb-4 h-32 rounded-lg overflow-hidden">
+                  <div className="mb-4 h-48 rounded-lg overflow-hidden">
                     <img 
                       src={project.image} 
                       alt={project.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-top"
                     />
                   </div>
                   <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
