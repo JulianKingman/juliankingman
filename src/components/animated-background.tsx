@@ -12,9 +12,35 @@ const AnimatedBackground = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    let currentWidth = 0;
+    let currentHeight = 0;
+
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const newWidth = window.innerWidth;
+      const newHeight = window.innerHeight;
+      
+      // Store old dimensions for particle repositioning
+      const oldWidth = currentWidth;
+      const oldHeight = currentHeight;
+      
+      canvas.width = newWidth;
+      canvas.height = newHeight;
+      
+      // If this is a resize (not initial setup), redistribute particles
+      if (oldWidth > 0 && oldHeight > 0 && (oldWidth !== newWidth || oldHeight !== newHeight)) {
+        particles.forEach(particle => {
+          // Proportionally adjust particle positions
+          particle.x = (particle.x / oldWidth) * newWidth;
+          particle.y = (particle.y / oldHeight) * newHeight;
+          
+          // Ensure particles stay within bounds
+          particle.x = Math.max(0, Math.min(newWidth, particle.x));
+          particle.y = Math.max(0, Math.min(newHeight, particle.y));
+        });
+      }
+      
+      currentWidth = newWidth;
+      currentHeight = newHeight;
     };
 
     resizeCanvas();
@@ -96,7 +122,7 @@ const AnimatedBackground = () => {
         particle.y += particle.speedY;
         particle.twinkle += particle.pulseSpeed;
 
-        // Wrap around screen
+        // Wrap around screen with current canvas dimensions
         if (particle.x < 0) particle.x = canvas.width;
         if (particle.x > canvas.width) particle.x = 0;
         if (particle.y < 0) particle.y = canvas.height;

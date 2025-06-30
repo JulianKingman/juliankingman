@@ -3,65 +3,56 @@
 import { useState } from 'react';
 import AnimatedBackground from "@/components/animated-background";
 
-const projects = [
+const projects: Project[] = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    role: "Full-Stack Developer",
-    description: "Built a modern e-commerce platform with React, Node.js, and PostgreSQL. Features include real-time inventory management, payment processing, and advanced analytics.",
-    tech: ["React", "Node.js", "PostgreSQL", "Stripe", "Redis"],
-    image: "🛍️",
-    color: "from-blue-500 to-orange-600"
+    title: "Giving Universe",
+    role: "Full-Stack Web3 Developer",
+    description: "A comprehensive blockchain platform for charitable giving and impact tracking. Built as a monorepo with multiple applications supporting various blockchain networks for transparent donation management.",
+    tech: ["TypeScript", "React", "Solidity", "Next.js", "Prisma", "IPFS", "Multi-chain"],
+    image: "/projects/GivingUniverse.jpg",
+    color: "from-green-500 to-blue-600",
+    liveUrl: "https://givinguniverse.org/",
+    githubUrl: "https://github.com/CollaborativeEconomics/monorepo"
   },
   {
     id: 2,
-    title: "AI Chat Assistant",
-    role: "Frontend Lead",
-    description: "Developed an intelligent chat interface using React and WebSocket connections. Integrated with OpenAI API for natural language processing.",
-    tech: ["React", "TypeScript", "WebSocket", "OpenAI API", "Tailwind CSS"],
-    image: "🤖",
-    color: "from-amber-500 to-blue-600"
+    title: "Clipboard.fitness",
+    role: "Full-Stack Developer",
+    description: "A modern training management platform for personal trainers. Features drag-and-drop program building, visual progress tracking, and comprehensive session management tools.",
+    tech: ["React", "TypeScript", "Node.js", "Database", "Real-time", "Mobile-responsive"],
+    image: "/projects/Clipboard.jpg",
+    color: "from-blue-500 to-purple-600",
+    liveUrl: "https://www.clipboard.fitness",
+    githubUrl: null
   },
   {
     id: 3,
-    title: "Real-Time Dashboard",
-    role: "UI/UX Developer",
-    description: "Created a responsive analytics dashboard with real-time data visualization. Used D3.js for custom charts and animations.",
-    tech: ["Vue.js", "D3.js", "WebSocket", "Chart.js", "SCSS"],
-    image: "📊",
-    color: "from-orange-500 to-yellow-600"
-  },
-  {
-    id: 4,
-    title: "Mobile Health App",
-    role: "React Native Developer",
-    description: "Built a cross-platform health tracking app with biometric authentication and cloud sync capabilities.",
-    tech: ["React Native", "Firebase", "SQLite", "Expo", "Redux"],
-    image: "🏥",
-    color: "from-red-500 to-amber-600"
-  },
-  {
-    id: 5,
-    title: "Blockchain Wallet",
+    title: "Allo Yeeter",
     role: "Web3 Developer",
-    description: "Developed a secure cryptocurrency wallet with multi-chain support and DeFi integrations.",
-    tech: ["Web3.js", "Solidity", "Ethereum", "MetaMask", "React"],
-    image: "₿",
-    color: "from-yellow-500 to-orange-600"
-  },
-  {
-    id: 6,
-    title: "Video Streaming Platform",
-    role: "Backend Developer",
-    description: "Built a scalable video streaming service with CDN integration and adaptive bitrate streaming.",
-    tech: ["Node.js", "FFmpeg", "AWS S3", "CloudFront", "WebRTC"],
-    image: "🎬",
-    color: "from-indigo-500 to-amber-600"
+    description: "A fund distribution tool built with the Allo protocol for public goods funding. Enables efficient allocation and distribution of resources within the Web3 ecosystem.",
+    tech: ["TypeScript", "React", "Solidity", "Ethereum", "Allo Protocol", "DeFi"],
+    image: "/projects/Yeeter.jpg",
+    color: "from-purple-500 to-pink-600",
+    liveUrl: "https://allo-yeeter.vercel.app",
+    githubUrl: "https://github.com/greenpill-dev-guild/allo-yeeter"
   }
 ];
 
+interface Project {
+  id: number;
+  title: string;
+  role: string;
+  description: string;
+  tech: string[];
+  image: string;
+  color: string;
+  liveUrl: string;
+  githubUrl: string | null;
+}
+
 export default function Projects() {
-  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
     <>
@@ -101,7 +92,13 @@ export default function Projects() {
                 
                 {/* Content */}
                 <div className="relative z-10">
-                  <div className="text-4xl mb-4 text-center">{project.image}</div>
+                  <div className="mb-4 h-32 rounded-lg overflow-hidden">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                   <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
                   <p className="text-amber-400 text-sm mb-3">{project.role}</p>
                   <p className="text-gray-300 text-sm mb-4 line-clamp-3">{project.description}</p>
@@ -154,6 +151,14 @@ export default function Projects() {
               </button>
             </div>
             
+            <div className="mb-6 h-48 rounded-lg overflow-hidden">
+              <img 
+                src={selectedProject.image} 
+                alt={selectedProject.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            
             <p className="text-gray-300 mb-6 leading-relaxed">{selectedProject.description}</p>
             
             <div className="mb-6">
@@ -168,12 +173,24 @@ export default function Projects() {
             </div>
             
             <div className="flex gap-4">
-              <button className="flex-1 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-600 rounded-xl font-semibold text-white hover:scale-105 transition-transform">
-                View Demo
-              </button>
-              <button className="flex-1 px-6 py-3 border border-orange-500/50 rounded-xl font-semibold text-orange-300 hover:text-white hover:border-orange-400 transition-all">
-                View Code
-              </button>
+              <a 
+                href={selectedProject.liveUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex-1 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-600 rounded-xl font-semibold text-white hover:scale-105 transition-transform text-center"
+              >
+                View Live Site
+              </a>
+              {selectedProject.githubUrl && (
+                <a 
+                  href={selectedProject.githubUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex-1 px-6 py-3 border border-orange-500/50 rounded-xl font-semibold text-orange-300 hover:text-white hover:border-orange-400 transition-all text-center"
+                >
+                  View Code
+                </a>
+              )}
             </div>
           </div>
         </div>
