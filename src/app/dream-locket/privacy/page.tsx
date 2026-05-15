@@ -99,18 +99,13 @@ export default function DreamLocketPrivacyPage() {
               </p>
             </Section>
 
-            <Section title="Apple Intelligence (optional, iOS 26+)">
+            <Section title="No network calls, no AI services">
               <p>
-                On devices that support Apple Intelligence, Dream Locket can
-                surface themes and patterns across your journal. These features
-                use Apple&apos;s on-device foundation models. Your dreams are
-                not sent to Dream Locket and are not used to train any model.
-              </p>
-              <p>
-                When Apple Intelligence opts to use Apple&apos;s Private Cloud
-                Compute for a particular request, that handoff is governed by
-                Apple and described in Apple&apos;s documentation. Dream Locket
-                does not invoke any other AI service.
+                Dream Locket does not make any network requests for its core
+                functionality. Your dreams are never sent to Dream Locket, to
+                Julian Kingman, or to any third-party AI service or cloud API.
+                The only network activity the app participates in is
+                Apple&apos;s iCloud sync — and only if you turn it on.
               </p>
             </Section>
 
@@ -124,8 +119,8 @@ export default function DreamLocketPrivacyPage() {
                   re-locking when the app moves to the background
                 </li>
                 <li>
-                  Per-entry encryption available for sensitive dreams, using
-                  keys derived on your device
+                  Encryption-at-rest for every entry, using keys derived on
+                  your device — entries are never stored in plaintext
                 </li>
                 <li>
                   Standard iOS data protection for the underlying database

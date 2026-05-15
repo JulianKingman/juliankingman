@@ -6,7 +6,7 @@ import AnimatedBackground from "@/components/animated-background";
 export const metadata: Metadata = {
   title: "Dream Locket — Julian Kingman",
   description:
-    "A private, local-first dream journal for iOS. Encrypted, Face ID-locked, with on-device Apple Intelligence insights.",
+    "A private, local-first dream journal for iOS. Encrypted, Face ID-locked, optional iCloud sync — and nothing ever leaves your device.",
 };
 
 const TESTFLIGHT_URL = "https://testflight.apple.com/join/HwQfrgq8";
@@ -21,12 +21,12 @@ const features = [
     body: "Auto-relocks the moment the app goes to background. Your subconscious stays yours.",
   },
   {
-    title: "End-to-end encryption",
-    body: "Sensitive entries are encrypted with a key derived from your device — readable only on hardware you control.",
+    title: "Always-on encryption",
+    body: "Every entry is encrypted at rest with a key derived from your device. Nothing is ever stored in plaintext.",
   },
   {
-    title: "Apple Intelligence insights",
-    body: "On iOS 26+, on-device models surface themes, motifs, and patterns across your journal — no servers, no telemetry.",
+    title: "Bring your existing journal",
+    body: "Import dreams from another app or a text export — no need to leave your history behind to switch.",
   },
   {
     title: "Optional iCloud sync",
@@ -49,7 +49,6 @@ const stack = [
   "React Native",
   "Tamagui",
   "SQLite",
-  "Apple Intelligence",
   "MMKV",
   "expo-local-authentication",
   "iCloud (CloudKit)",
@@ -132,8 +131,8 @@ export default function DreamLocketPage() {
         <section className="max-w-3xl mx-auto mt-32 text-center">
           <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
             Dream Locket is a quiet, on-device sanctuary for recording and reflecting on dreams.
-            No accounts, no servers, no analytics. Just you, your journal, and — if you want it —
-            a layer of on-device intelligence that surfaces patterns over time.
+            No accounts, no servers, no analytics. Just you and your journal — encrypted, locked
+            behind Face ID, and yours alone.
           </p>
         </section>
 
