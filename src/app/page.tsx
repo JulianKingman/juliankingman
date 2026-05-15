@@ -44,7 +44,7 @@ export default function Home() {
           </div>
 
           {/* Name with glow */}
-          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-6 relative">
+          <h1 className="font-display text-4xl sm:text-6xl md:text-8xl font-bold tracking-tight mb-6 relative">
             <span className="bg-gradient-to-r from-amber-400 via-orange-500 to-yellow-300 bg-clip-text text-transparent animate-pulse">
               Julian Kingman
             </span>

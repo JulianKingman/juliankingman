@@ -87,7 +87,7 @@ export default function Projects() {
           
           {/* Header */}
           <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            <h1 className="font-display text-5xl md:text-6xl font-bold tracking-tight mb-6">
               <span className="bg-gradient-to-r from-amber-400 via-orange-500 to-yellow-300 bg-clip-text text-transparent">
                 My Projects
               </span>

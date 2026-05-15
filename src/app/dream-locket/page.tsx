@@ -41,9 +41,8 @@ const features = [
 
 const screenshots = [
   { src: "/dream-locket/screens/home.png", alt: "Dream Locket home feed", label: "Home feed" },
-  { src: "/dream-locket/screens/new-entry.png", alt: "Dream Locket new entry composer", label: "New entry" },
-  { src: "/dream-locket/screens/detail.png", alt: "Dream Locket entry detail", label: "Detail view" },
-  { src: "/dream-locket/screens/import.png", alt: "Dream Locket import flow", label: "Import" },
+  { src: "/dream-locket/screens/favorites.png", alt: "Dream Locket favorites view", label: "Favorites" },
+  { src: "/dream-locket/screens/detail.png", alt: "Dream Locket entry detail", label: "Detail" },
 ];
 
 const stack = [
@@ -61,7 +60,8 @@ function PhoneFrame({ src, alt, label }: { src: string; alt: string; label: stri
   return (
     <figure className="flex flex-col items-center">
       <div className="rounded-[2.5rem] border border-amber-500/20 p-2 bg-gradient-to-b from-amber-500/5 to-transparent shadow-[0_0_60px_-20px_rgba(255,183,125,0.25)]">
-        <div className="relative w-[240px] h-[480px] sm:w-[260px] sm:h-[520px] rounded-[2rem] overflow-hidden bg-[#040e1f]">
+        {/* aspect-[1320/2868] matches modern iPhone (6.9") screenshot dimensions */}
+        <div className="relative w-[240px] aspect-[1320/2868] sm:w-[260px] rounded-[2rem] overflow-hidden bg-[#f5ebe2]">
           <Image
             src={src}
             alt={alt}
@@ -101,7 +101,7 @@ export default function DreamLocketPage() {
               className="relative rounded-[2rem] shadow-2xl"
             />
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
+          <h1 className="font-display text-5xl md:text-7xl font-bold tracking-tight mb-6">
             <span className="bg-gradient-to-r from-amber-300 via-orange-400 to-yellow-200 bg-clip-text text-transparent">
               Dream Locket
             </span>
@@ -138,7 +138,7 @@ export default function DreamLocketPage() {
 
         {/* Features */}
         <section className="max-w-6xl mx-auto mt-32">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-14">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-center mb-14">
             <span className="bg-gradient-to-r from-amber-300 to-orange-400 bg-clip-text text-transparent">
               Built for privacy first
             </span>
@@ -158,12 +158,12 @@ export default function DreamLocketPage() {
 
         {/* Screenshots */}
         <section className="max-w-6xl mx-auto mt-32">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-14">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-center mb-14">
             <span className="bg-gradient-to-r from-amber-300 to-orange-400 bg-clip-text text-transparent">
               A look inside
             </span>
           </h2>
-          <div className="flex gap-8 overflow-x-auto pb-6 px-2 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible md:gap-6">
+          <div className="flex gap-8 overflow-x-auto pb-6 px-2 snap-x snap-mandatory md:grid md:grid-cols-3 md:justify-items-center md:overflow-visible md:gap-8">
             {screenshots.map((s) => (
               <div key={s.src} className="snap-center shrink-0 md:shrink">
                 <PhoneFrame {...s} />
@@ -185,7 +185,7 @@ export default function DreamLocketPage() {
 
         {/* Tech stack */}
         <section className="max-w-4xl mx-auto mt-32 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-gray-200">How it&apos;s built</h2>
+          <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-8 text-gray-200">How it&apos;s built</h2>
           <div className="flex flex-wrap justify-center gap-3">
             {stack.map((s) => (
               <span
@@ -196,6 +196,25 @@ export default function DreamLocketPage() {
               </span>
             ))}
           </div>
+        </section>
+
+        {/* Support */}
+        <section className="max-w-3xl mx-auto mt-32 text-center">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-6">
+            <span className="bg-gradient-to-r from-amber-300 to-orange-400 bg-clip-text text-transparent">
+              Need help?
+            </span>
+          </h2>
+          <p className="text-gray-300 mb-8 leading-relaxed">
+            Run into a bug, have a feature request, or just want to say hi?
+            I read every message.
+          </p>
+          <Link
+            href="/contact"
+            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-amber-500/25"
+          >
+            Contact support
+          </Link>
         </section>
 
         {/* Footer CTA */}

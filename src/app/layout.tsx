@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import "@fontsource-variable/elms-sans/wght.css";
 import Navigation from "@/components/navigation";
 import "./globals.css";
 

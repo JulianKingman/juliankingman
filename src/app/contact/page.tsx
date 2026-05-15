@@ -40,13 +40,13 @@ export default function Contact() {
         <div className="text-center max-w-2xl mx-auto">
           
           {/* Main heading */}
-          <h1 className="text-5xl md:text-6xl font-bold mb-8">
+          <h1 className="font-display text-5xl md:text-6xl font-bold tracking-tight mb-8">
             <span className="bg-gradient-to-r from-amber-400 via-orange-500 to-yellow-300 bg-clip-text text-transparent">
               Let's build something
             </span>
           </h1>
-          
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-white">
+
+          <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight mb-12 text-white">
             that matters.
           </h2>
 
