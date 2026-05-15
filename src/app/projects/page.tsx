@@ -1,9 +1,22 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import AnimatedBackground from "@/components/animated-background";
 
 const projects: Project[] = [
+  {
+    id: 0,
+    title: "Dream Locket",
+    role: "Solo iOS Developer & Designer",
+    description: "A private, local-first dream journal for iOS. Face ID lock, end-to-end encryption, optional iCloud sync, and on-device Apple Intelligence insights on iOS 26+.",
+    tech: ["Expo", "React Native", "Tamagui", "SQLite", "Apple Intelligence", "Encryption"],
+    image: "/dream-locket/icon.png",
+    color: "from-amber-500 to-blue-600",
+    liveUrl: "/dream-locket",
+    githubUrl: null,
+    internalUrl: "/dream-locket",
+  },
   {
     id: 1,
     title: "Giving Universe",
@@ -49,6 +62,11 @@ interface Project {
   color: string;
   liveUrl: string;
   githubUrl: string | null;
+  /**
+   * If set, clicking the project card navigates to this internal route
+   * instead of opening the modal.
+   */
+  internalUrl?: string;
 }
 
 export default function Projects() {
@@ -81,44 +99,63 @@ export default function Projects() {
 
           {/* Project Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {projects.map((project) => (
-              <div
-                key={project.id}
-                className="group relative p-6 bg-black/20 backdrop-blur-sm rounded-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-pointer"
-                onClick={() => setSelectedProject(project)}
-              >
-                {/* Glow effect */}
-                <div className={`absolute inset-0 bg-gradient-to-r ${project.color} rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-500 blur-xl`} />
-                
-                {/* Content */}
-                <div className="relative z-10">
-                  <div className="mb-4 h-48 rounded-lg overflow-hidden">
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="w-full h-full object-cover object-top"
-                    />
+            {projects.map((project) => {
+              const cardClass =
+                "group relative p-6 bg-black/20 backdrop-blur-sm rounded-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-pointer block";
+
+              const cardInner = (
+                <>
+                  {/* Glow effect */}
+                  <div className={`absolute inset-0 bg-gradient-to-r ${project.color} rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-500 blur-xl`} />
+
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <div className="mb-4 h-48 rounded-lg overflow-hidden bg-black/30">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover object-top"
+                      />
+                    </div>
+                    <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
+                    <p className="text-amber-400 text-sm mb-3">{project.role}</p>
+                    <p className="text-gray-300 text-sm mb-4 line-clamp-3">{project.description}</p>
+
+                    {/* Tech stack */}
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.slice(0, 3).map((tech) => (
+                        <span key={tech} className="px-2 py-1 bg-orange-500/20 rounded-md text-xs text-orange-300">
+                          {tech}
+                        </span>
+                      ))}
+                      {project.tech.length > 3 && (
+                        <span className="px-2 py-1 bg-gray-500/20 rounded-md text-xs text-gray-400">
+                          +{project.tech.length - 3}
+                        </span>
+                      )}
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
-                  <p className="text-amber-400 text-sm mb-3">{project.role}</p>
-                  <p className="text-gray-300 text-sm mb-4 line-clamp-3">{project.description}</p>
-                  
-                  {/* Tech stack */}
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.slice(0, 3).map((tech) => (
-                      <span key={tech} className="px-2 py-1 bg-orange-500/20 rounded-md text-xs text-orange-300">
-                        {tech}
-                      </span>
-                    ))}
-                    {project.tech.length > 3 && (
-                      <span className="px-2 py-1 bg-gray-500/20 rounded-md text-xs text-gray-400">
-                        +{project.tech.length - 3}
-                      </span>
-                    )}
-                  </div>
+                </>
+              );
+
+              if (project.internalUrl) {
+                return (
+                  <Link key={project.id} href={project.internalUrl} className={cardClass}>
+                    {cardInner}
+                  </Link>
+                );
+              }
+
+              return (
+                <div
+                  key={project.id}
+                  className={cardClass}
+                  onClick={() => setSelectedProject(project)}
+                >
+                  {cardInner}
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Call to Action */}
