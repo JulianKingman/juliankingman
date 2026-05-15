@@ -9,8 +9,7 @@ export const metadata: Metadata = {
     "A private, local-first dream journal for iOS. Encrypted, Face ID-locked, with on-device Apple Intelligence insights.",
 };
 
-// TODO:dream-locket-cta — replace with TestFlight invite or App Store URL when available.
-const TESTFLIGHT_URL = "#";
+const TESTFLIGHT_URL = "https://testflight.apple.com/join/HwQfrgq8";
 
 const features = [
   {
@@ -113,6 +112,8 @@ export default function DreamLocketPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
               href={TESTFLIGHT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-amber-500/25"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full blur opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
@@ -223,6 +224,8 @@ export default function DreamLocketPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
               href={TESTFLIGHT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-amber-500/25"
             >
               Get on TestFlight
