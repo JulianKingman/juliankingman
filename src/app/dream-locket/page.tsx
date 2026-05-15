@@ -237,6 +237,11 @@ export default function DreamLocketPage() {
               ← Back to projects
             </Link>
           </div>
+          <div className="mt-10 text-sm text-gray-500">
+            <Link href="/dream-locket/privacy" className="hover:text-amber-300 transition-colors">
+              Privacy Policy
+            </Link>
+          </div>
         </section>
       </main>
     </>
