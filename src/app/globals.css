@@ -240,14 +240,325 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1);
+  background: #0d0805;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #00ffff, #ff00ff);
-  border-radius: 4px;
+  background: linear-gradient(to bottom, #ffb000, #b35c00);
+  border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #00cccc, #cc00cc);
+  background: linear-gradient(to bottom, #ffc94d, #d97400);
+}
+
+/* ------------------------------------------------------------------ */
+/* Mage rig: the sprite plus its hovering CRT monitors                 */
+/* ------------------------------------------------------------------ */
+
+/* --px is the on-screen size of one art pixel. */
+.mage-rig {
+  --px: 2px;
+  position: relative;
+  display: inline-block;
+}
+
+@media (min-width: 768px) {
+  .mage-rig {
+    --px: 3px;
+  }
+}
+
+.mage-sprite {
+  width: calc(var(--px) * 64);
+  height: auto;
+}
+
+@keyframes monitor-float {
+  0%, 100% { transform: translateY(0); }
+  10%, 90% { transform: translateY(calc(var(--px) * -1)); }
+  20%, 80% { transform: translateY(calc(var(--px) * -2)); }
+  30%, 70% { transform: translateY(calc(var(--px) * -3)); }
+  40%, 60% { transform: translateY(calc(var(--px) * -4)); }
+  50% { transform: translateY(calc(var(--px) * -5)); }
+}
+
+@keyframes monitor-glow {
+  0%, 100% { filter: drop-shadow(0 0 calc(var(--px) * 3) rgba(255, 176, 0, 0.22)); }
+  50% { filter: drop-shadow(0 0 calc(var(--px) * 5) rgba(255, 176, 0, 0.4)); }
+}
+
+.crt-monitor {
+  position: absolute;
+  width: calc(var(--px) * 44);
+  height: calc(var(--px) * 34);
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  animation:
+    monitor-float var(--float, 14s) steps(10, end) infinite,
+    monitor-glow 5s ease-in-out infinite;
+  animation-delay: var(--float-delay, 0s), var(--float-delay, 0s);
+}
+
+/* Small screens: one monitor on each side */
+.crt-monitor-a {
+  right: calc(100% + var(--px) * 4);
+  top: calc(var(--px) * 8);
+  --float: 11s;
+  --float-delay: -3s;
+}
+.crt-monitor-c {
+  left: calc(100% + var(--px) * 4);
+  top: calc(var(--px) * 14);
+  --float: 13s;
+  --float-delay: -8s;
+}
+.crt-monitor-b,
+.crt-monitor-d {
+  display: none;
+}
+
+/* Wider screens: two a side, arcing around the mage */
+@media (min-width: 640px) {
+  .crt-monitor-a {
+    right: calc(100% + var(--px) * 8);
+    top: calc(var(--px) * -14);
+  }
+  .crt-monitor-b {
+    display: block;
+    right: calc(100% + var(--px) * 26);
+    top: calc(var(--px) * 30);
+    --float: 16s;
+    --float-delay: -6s;
+  }
+  .crt-monitor-c {
+    left: calc(100% + var(--px) * 10);
+    top: calc(var(--px) * -8);
+  }
+  .crt-monitor-d {
+    display: block;
+    left: calc(100% + var(--px) * 24);
+    top: calc(var(--px) * 36);
+    --float: 12s;
+    --float-delay: -1s;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Sacred geometry line art                                            */
+/* ------------------------------------------------------------------ */
+
+.sg {
+  color: #ffb000;
+  overflow: visible;
+}
+
+.sg-spin,
+.sg-breathe {
+  transform-box: view-box;
+  transform-origin: center;
+}
+
+.sg-spin {
+  animation: sg-spin var(--sg-spin, 240s) linear infinite;
+  animation-direction: var(--sg-dir, normal);
+}
+
+.sg-breathe {
+  animation: sg-breathe 14s ease-in-out infinite;
+}
+
+.sg-stroke {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: sg-draw var(--sg-cycle, 26s) linear infinite;
+}
+
+@keyframes sg-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes sg-breathe {
+  0%, 100% { transform: scale(0.97); opacity: 0.75; }
+  50% { transform: scale(1.03); opacity: 1; }
+}
+
+@keyframes sg-draw {
+  0% { stroke-dashoffset: 1; opacity: 1; }
+  14% { stroke-dashoffset: 0; opacity: 1; }
+  68% { stroke-dashoffset: 0; opacity: 1; }
+  78% { stroke-dashoffset: 0; opacity: 0; }
+  100% { stroke-dashoffset: 1; opacity: 0; }
+}
+
+/* ------------------------------------------------------------------ */
+/* CRT buttons                                                         */
+/* ------------------------------------------------------------------ */
+
+/*
+ * Pixel-cornered, amber-phosphor buttons. The notched corners come from
+ * four hard box-shadows (one per side), so the element itself stays a plain
+ * box and the shadows can also carry the drop edge and the glow.
+ */
+.btn-crt {
+  --b: 3px;
+  --face: #ffb000;
+  --face-hi: #ffd87a;
+  --face-lo: #b86e00;
+  --edge: #6b3a00;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  margin: var(--b) var(--b) calc(var(--b) * 2);
+  padding: 0.7rem 1.5rem 0.75rem;
+  font-family: var(--font-pixel), var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 1.5rem;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #1f0f04;
+  background: var(--face);
+  cursor: pointer;
+  user-select: none;
+  box-shadow:
+    inset var(--b) var(--b) 0 0 var(--face-hi),
+    inset calc(var(--b) * -1) calc(var(--b) * -1) 0 0 var(--face-lo),
+    calc(var(--b) * -1) 0 0 0 var(--face),
+    var(--b) 0 0 0 var(--face),
+    0 calc(var(--b) * -1) 0 0 var(--face),
+    0 var(--b) 0 0 var(--face),
+    calc(var(--b) * -1) var(--b) 0 0 var(--edge),
+    var(--b) var(--b) 0 0 var(--edge),
+    0 calc(var(--b) * 2) 0 0 var(--edge),
+    0 0 28px 2px rgba(255, 176, 0, 0.28);
+  transition: background-color 120ms steps(2), box-shadow 120ms steps(2), color 120ms steps(2);
+}
+
+.btn-crt::before {
+  content: '>';
+  opacity: 0.55;
+}
+
+.btn-crt:hover {
+  --face: #ffc640;
+  box-shadow:
+    inset var(--b) var(--b) 0 0 var(--face-hi),
+    inset calc(var(--b) * -1) calc(var(--b) * -1) 0 0 var(--face-lo),
+    calc(var(--b) * -1) 0 0 0 var(--face),
+    var(--b) 0 0 0 var(--face),
+    0 calc(var(--b) * -1) 0 0 var(--face),
+    0 var(--b) 0 0 var(--face),
+    calc(var(--b) * -1) var(--b) 0 0 var(--edge),
+    var(--b) var(--b) 0 0 var(--edge),
+    0 calc(var(--b) * 2) 0 0 var(--edge),
+    0 0 44px 6px rgba(255, 176, 0, 0.45);
+}
+
+.btn-crt:hover::before {
+  opacity: 1;
+  animation: crt-blink 0.9s steps(1, end) infinite;
+}
+
+/* pressed: the face drops onto its edge */
+.btn-crt:active {
+  transform: translateY(var(--b));
+  box-shadow:
+    inset var(--b) var(--b) 0 0 var(--face-lo),
+    inset calc(var(--b) * -1) calc(var(--b) * -1) 0 0 var(--face-hi),
+    calc(var(--b) * -1) 0 0 0 var(--face),
+    var(--b) 0 0 0 var(--face),
+    0 calc(var(--b) * -1) 0 0 var(--face),
+    0 var(--b) 0 0 var(--face),
+    0 0 20px 2px rgba(255, 176, 0, 0.3);
+}
+
+.btn-crt:focus-visible {
+  outline: 2px solid #ffe2a0;
+  outline-offset: calc(var(--b) * 3);
+}
+
+/* Secondary: a dark screen with a phosphor outline; inverts on hover */
+.btn-crt-ghost {
+  color: #ffb000;
+  text-shadow: 0 0 8px rgba(255, 176, 0, 0.6);
+  background-color: #140a03;
+  background-image: repeating-linear-gradient(to bottom, rgba(255, 176, 0, 0.07) 0 1px, transparent 1px 3px);
+  box-shadow:
+    calc(var(--b) * -1) 0 0 0 var(--face),
+    var(--b) 0 0 0 var(--face),
+    0 calc(var(--b) * -1) 0 0 var(--face),
+    0 var(--b) 0 0 var(--face),
+    calc(var(--b) * -1) var(--b) 0 0 var(--edge),
+    var(--b) var(--b) 0 0 var(--edge),
+    0 calc(var(--b) * 2) 0 0 var(--edge),
+    0 0 22px 0 rgba(255, 176, 0, 0.14);
+}
+
+.btn-crt-ghost:hover {
+  --face: #ffb000;
+  color: #1f0f04;
+  text-shadow: none;
+  background-color: #ffb000;
+  background-image: none;
+  box-shadow:
+    calc(var(--b) * -1) 0 0 0 var(--face),
+    var(--b) 0 0 0 var(--face),
+    0 calc(var(--b) * -1) 0 0 var(--face),
+    0 var(--b) 0 0 var(--face),
+    calc(var(--b) * -1) var(--b) 0 0 var(--edge),
+    var(--b) var(--b) 0 0 var(--edge),
+    0 calc(var(--b) * 2) 0 0 var(--edge),
+    0 0 36px 4px rgba(255, 176, 0, 0.35);
+}
+
+.btn-crt-ghost:active {
+  box-shadow:
+    calc(var(--b) * -1) 0 0 0 var(--face),
+    var(--b) 0 0 0 var(--face),
+    0 calc(var(--b) * -1) 0 0 var(--face),
+    0 var(--b) 0 0 var(--face),
+    0 0 20px 2px rgba(255, 176, 0, 0.3);
+}
+
+.btn-crt-sm {
+  --b: 2px;
+  padding: 0.5rem 1rem 0.55rem;
+  font-size: 1.25rem;
+}
+
+/* Square icon button (e.g. modal close) */
+.btn-crt-icon {
+  --b: 2px;
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.25rem;
+}
+
+.btn-crt-icon::before {
+  content: none;
+}
+
+@keyframes crt-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pixelated-float,
+  .floating-shadow,
+  .crt-monitor,
+  .sg-spin,
+  .sg-breathe,
+  .btn-crt:hover::before {
+    animation: none;
+  }
+  .sg-stroke {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
 }

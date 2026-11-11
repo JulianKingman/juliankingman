@@ -12,7 +12,7 @@ const projects: Project[] = [
     description: "A private, local-first dream journal for iOS. Face ID lock, always-on encryption, optional iCloud sync — and nothing ever leaves your device.",
     tech: ["Expo", "React Native", "Tamagui", "SQLite", "CloudKit", "Encryption"],
     image: "/dream-locket/icon.png",
-    color: "from-amber-500 to-blue-600",
+    color: "from-amber-400 to-orange-600",
     liveUrl: "/dream-locket",
     githubUrl: null,
     internalUrl: "/dream-locket",
@@ -24,7 +24,7 @@ const projects: Project[] = [
     description: "A comprehensive blockchain platform for charitable giving and impact tracking. Built as a monorepo with multiple applications supporting various blockchain networks for transparent donation management.",
     tech: ["TypeScript", "React", "Solidity", "Next.js", "Prisma", "IPFS", "Multi-chain"],
     image: "/projects/GivingUniverse.jpg",
-    color: "from-green-500 to-blue-600",
+    color: "from-yellow-400 to-amber-600",
     liveUrl: "https://givinguniverse.org/",
     githubUrl: "https://github.com/CollaborativeEconomics/monorepo"
   },
@@ -35,7 +35,7 @@ const projects: Project[] = [
     description: "A modern training management platform for personal trainers. Features drag-and-drop program building, visual progress tracking, and comprehensive session management tools.",
     tech: ["React", "TypeScript", "Node.js", "Database", "Real-time", "Mobile-responsive"],
     image: "/projects/Clipboard.jpg",
-    color: "from-blue-500 to-purple-600",
+    color: "from-orange-400 to-amber-600",
     liveUrl: "https://www.clipboard.fitness",
     githubUrl: null
   },
@@ -46,7 +46,7 @@ const projects: Project[] = [
     description: "A fund distribution tool built with the Allo protocol for public goods funding. Enables efficient allocation and distribution of resources within the Web3 ecosystem.",
     tech: ["TypeScript", "React", "Solidity", "Ethereum", "Allo Protocol", "DeFi"],
     image: "/projects/Yeeter.jpg",
-    color: "from-purple-500 to-pink-600",
+    color: "from-amber-500 to-red-700",
     liveUrl: "https://allo-yeeter.vercel.app",
     githubUrl: "https://github.com/greenpill-dev-guild/allo-yeeter"
   }
@@ -161,11 +161,8 @@ export default function Projects() {
           {/* Call to Action */}
           <div className="text-center">
             <p className="text-gray-300 mb-6">Interested in collaborating on your next project?</p>
-            <a
-              href="/contact"
-              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-amber-500/25"
-            >
-              Let's Work Together
+            <a href="/contact" className="btn-crt">
+              Let&apos;s Work Together
             </a>
           </div>
         </div>
@@ -182,12 +179,13 @@ export default function Projects() {
               </div>
               <button
                 onClick={() => setSelectedProject(null)}
-                className="text-gray-400 hover:text-white transition-colors"
+                aria-label="Close"
+                className="btn-crt btn-crt-ghost btn-crt-icon flex-shrink-0"
               >
-                ✕
+                X
               </button>
             </div>
-            
+
             <div className="mb-6 h-48 rounded-lg overflow-hidden">
               <img 
                 src={selectedProject.image} 
@@ -209,21 +207,21 @@ export default function Projects() {
               </div>
             </div>
             
-            <div className="flex gap-4">
-              <a 
-                href={selectedProject.liveUrl} 
-                target="_blank" 
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a
+                href={selectedProject.liveUrl}
+                target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-600 rounded-xl font-semibold text-white hover:scale-105 transition-transform text-center"
+                className="btn-crt btn-crt-sm flex-1"
               >
                 View Live Site
               </a>
               {selectedProject.githubUrl && (
-                <a 
-                  href={selectedProject.githubUrl} 
-                  target="_blank" 
+                <a
+                  href={selectedProject.githubUrl}
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 px-6 py-3 border border-orange-500/50 rounded-xl font-semibold text-orange-300 hover:text-white hover:border-orange-400 transition-all text-center"
+                  className="btn-crt btn-crt-ghost btn-crt-sm flex-1"
                 >
                   View Code
                 </a>

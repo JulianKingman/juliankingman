@@ -1,4 +1,5 @@
 import AnimatedBackground from "@/components/animated-background";
+import { Torus } from "@/components/sacred-geometry";
 
 export default function About() {
   return (
@@ -10,34 +11,7 @@ export default function About() {
           
           {/* Animated mandala background */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <svg className="w-96 h-96 opacity-5 animate-spin" style={{ animationDuration: '60s' }} viewBox="0 0 400 400">
-              <g stroke="url(#mandalaGradient)" strokeWidth="1" fill="none">
-                {/* Mandala pattern */}
-                <circle cx="200" cy="200" r="150" />
-                <circle cx="200" cy="200" r="120" />
-                <circle cx="200" cy="200" r="90" />
-                <circle cx="200" cy="200" r="60" />
-                <circle cx="200" cy="200" r="30" />
-                
-                {/* Petals */}
-                {Array.from({ length: 12 }, (_, i) => {
-                  const angle = (i * 30) * Math.PI / 180;
-                  const x1 = 200 + Math.cos(angle) * 60;
-                  const y1 = 200 + Math.sin(angle) * 60;
-                  const x2 = 200 + Math.cos(angle) * 150;
-                  const y2 = 200 + Math.sin(angle) * 150;
-                  return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} />;
-                })}
-              </g>
-              <defs>
-                <linearGradient id="mandalaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#FFA500" />
-                  <stop offset="33%" stopColor="#FFD700" />
-                  <stop offset="66%" stopColor="#4169E1" />
-                  <stop offset="100%" stopColor="#FFA500" />
-                </linearGradient>
-              </defs>
-            </svg>
+            <Torus className="w-[min(40rem,120vw)] h-[min(40rem,120vw)] opacity-[0.12]" count={24} cycle={32} spin={300} />
           </div>
 
           {/* Content */}
@@ -94,7 +68,7 @@ export default function About() {
                       User Experience Design
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                      <div className="w-2 h-2 bg-yellow-300 rounded-full"></div>
                       System Architecture
                     </li>
                     <li className="flex items-center gap-2">
@@ -108,11 +82,8 @@ export default function About() {
 
             {/* Call to Action */}
             <div className="text-center">
-              <a
-                href="/contact"
-                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-amber-500/25"
-              >
-                Let's Build Something Together
+              <a href="/contact" className="btn-crt">
+                Let&apos;s Build Something Together
               </a>
             </div>
           </div>

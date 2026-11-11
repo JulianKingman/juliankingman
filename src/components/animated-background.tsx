@@ -46,16 +46,15 @@ const AnimatedBackground = () => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Spark colors from the cosmic image palette
+    // Spark colors: one amber-phosphor family, from pale gold to deep ember
     const sparkColors = [
-      '#FFD700', // Gold
-      '#FFA500', // Orange
-      '#FF8C00', // Dark orange
-      '#FF6347', // Tomato
-      '#4169E1', // Royal blue
-      '#1E90FF', // Dodger blue
-      '#00CED1', // Dark turquoise
-      '#FFB347', // Peach
+      '#FFB000', // Amber phosphor
+      '#FFB000',
+      '#FFC94D', // Warm gold
+      '#FFE2A0', // Pale gold
+      '#FF9A1F', // Orange
+      '#E87A00', // Deep orange
+      '#C2570A', // Ember
     ];
 
     // Particle system for cosmic sparks
@@ -94,13 +93,13 @@ const AnimatedBackground = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // Draw grid lines with warmer colors
-      ctx.strokeStyle = 'rgba(255, 165, 0, 0.05)'; // Orange grid
+      ctx.strokeStyle = 'rgba(255, 176, 0, 0.05)'; // Orange grid
       ctx.lineWidth = 1;
       
       const gridSize = 60;
       for (let x = 0; x < canvas.width; x += gridSize) {
         const alpha = 1 - (x / canvas.width) * 0.8;
-        ctx.strokeStyle = `rgba(255, 165, 0, ${alpha * 0.05})`;
+        ctx.strokeStyle = `rgba(255, 176, 0, ${alpha * 0.05})`;
         ctx.beginPath();
         ctx.moveTo(x, 0);
         ctx.lineTo(x, canvas.height);
@@ -109,7 +108,7 @@ const AnimatedBackground = () => {
 
       for (let y = 0; y < canvas.height; y += gridSize) {
         const alpha = 1 - (y / canvas.height) * 0.8;
-        ctx.strokeStyle = `rgba(255, 165, 0, ${alpha * 0.05})`;
+        ctx.strokeStyle = `rgba(255, 176, 0, ${alpha * 0.05})`;
         ctx.beginPath();
         ctx.moveTo(0, y);
         ctx.lineTo(canvas.width, y);
@@ -192,7 +191,7 @@ const AnimatedBackground = () => {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 -z-10"
-      style={{ background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1520 30%, #2a1810 60%, #16213e 100%)' }}
+      style={{ background: 'radial-gradient(ellipse 90% 70% at 50% 38%, #2a1608 0%, #170d07 42%, #0a0604 78%, #060403 100%)' }}
     />
   );
 };

@@ -12,7 +12,7 @@ export default function Contact() {
 
       // Create sparkle element with cosmic colors
       const sparkle = document.createElement('div');
-      const colors = ['bg-amber-400', 'bg-orange-400', 'bg-yellow-400', 'bg-blue-400'];
+      const colors = ['bg-amber-400', 'bg-orange-400', 'bg-yellow-300', 'bg-amber-200'];
       const randomColor = colors[Math.floor(Math.random() * colors.length)];
       
       sparkle.className = `fixed w-2 h-2 ${randomColor} rounded-full pointer-events-none animate-ping`;
