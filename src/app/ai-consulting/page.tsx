@@ -2,6 +2,25 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import AnimatedBackground from "@/components/animated-background";
 import { MetatronsCube } from "@/components/sacred-geometry";
+import {
+  siGmail,
+  siGoogledrive,
+  siGooglecalendar,
+  siGooglesheets,
+  siNotion,
+  siGithub,
+  siLinear,
+  siJira,
+  siStripe,
+  siHubspot,
+  siAirtable,
+  siShopify,
+  siQuickbooks,
+  siZoom,
+  siDropbox,
+  siMailchimp,
+  siZendesk,
+} from "simple-icons";
 
 export const metadata: Metadata = {
   title: "AI Consulting — Julian Kingman",
@@ -61,6 +80,71 @@ const safeguards = [
   {
     title: "Fail loudly",
     text: "No silent fallbacks and no made-up results. A run that fails or stalls raises an alert and tells the customer the truth about where things stand.",
+  },
+];
+
+const benefits = [
+  {
+    title: "Reliability first",
+    text: "The main reason to automate a process properly is that it then happens the same way every time. Steps don't get skipped on a busy day, and nothing depends on one person remembering.",
+    lead: true,
+  },
+  {
+    title: "Faster turnaround",
+    text: "Work starts when the request arrives, not when someone gets to it. Customers stop waiting on a queue.",
+  },
+  {
+    title: "Capacity without headcount",
+    text: "Your team spends its time on judgement and relationships while the repeatable work runs beside them.",
+  },
+  {
+    title: "A process you can see",
+    text: "Once a process runs through a system, you can see where it stalls, what each job costs and what to improve next.",
+  },
+];
+
+// Brand marks where the icon set carries one; a plain name otherwise.
+const integrations: Array<{ name: string; path?: string }> = [
+  { name: "Gmail", path: siGmail.path },
+  { name: "Google Drive", path: siGoogledrive.path },
+  { name: "Google Calendar", path: siGooglecalendar.path },
+  { name: "Google Sheets", path: siGooglesheets.path },
+  { name: "Microsoft 365" },
+  { name: "Outlook" },
+  { name: "Teams" },
+  { name: "Slack" },
+  { name: "Notion", path: siNotion.path },
+  { name: "GitHub", path: siGithub.path },
+  { name: "Linear", path: siLinear.path },
+  { name: "Jira", path: siJira.path },
+  { name: "Stripe", path: siStripe.path },
+  { name: "QuickBooks", path: siQuickbooks.path },
+  { name: "HubSpot", path: siHubspot.path },
+  { name: "Salesforce" },
+  { name: "Airtable", path: siAirtable.path },
+  { name: "Shopify", path: siShopify.path },
+  { name: "Mailchimp", path: siMailchimp.path },
+  { name: "Zendesk", path: siZendesk.path },
+  { name: "Zoom", path: siZoom.path },
+  { name: "Dropbox", path: siDropbox.path },
+];
+
+const terms = [
+  {
+    title: "Your data is not training data",
+    text: "Nothing you send through a system I build is used to train models. Where it matters, I can build on models with zero data retention.",
+  },
+  {
+    title: "You own the code",
+    text: "Everything I build for you is yours: the code, the prompts, the playbooks. You can run it without me.",
+  },
+  {
+    title: "Hosted where you want",
+    text: "It can run on my infrastructure or on yours. I can automate the deployment and infrastructure too, so shipping a change is one step.",
+  },
+  {
+    title: "Ongoing support",
+    text: "Models and APIs change. Monthly retainers are available to keep a system maintained and improving after launch.",
   },
 ];
 
@@ -131,13 +215,14 @@ export default function AiConsulting() {
               </span>
             </h1>
             <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-              I design and build AI automation flows that carry real work from request to result: agents that
-              are routed, checked, approved and accounted for. I build my own businesses on them.
+              For companies that want tools which automate important parts of how they work. I design and
+              build AI automation flows that carry real work from request to result: routed, checked, approved
+              and accounted for.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <Link href="/contact" className="btn-crt">
-                Start a conversation
-              </Link>
+              <a href="#start" className="btn-crt">
+                Book a consultation
+              </a>
               <a href="#work" className="btn-crt btn-crt-ghost">
                 See the work
               </a>
@@ -182,6 +267,30 @@ export default function AiConsulting() {
             </div>
           </section>
 
+          {/* Benefits */}
+          <section className="mb-24">
+            <h2 className="font-display text-3xl font-semibold tracking-tight text-amber-400 mb-10 text-center">
+              What you get out of it
+            </h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              {benefits.map((b) => (
+                <div
+                  key={b.title}
+                  className={`p-6 bg-black/20 backdrop-blur-sm rounded-2xl border transition-all duration-300 ${
+                    b.lead
+                      ? "md:col-span-3 border-amber-400/50"
+                      : "border-orange-500/20 hover:border-orange-500/40"
+                  }`}
+                >
+                  <h3 className={`font-display font-semibold text-white mb-3 ${b.lead ? "text-2xl" : "text-lg"}`}>
+                    {b.title}
+                  </h3>
+                  <p className={`text-gray-300 leading-relaxed ${b.lead ? "max-w-3xl" : "text-sm"}`}>{b.text}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
           {/* Verification and safety */}
           <section className="mb-24">
             <h2 className="font-display text-3xl font-semibold tracking-tight text-amber-400 mb-3 text-center">
@@ -200,6 +309,52 @@ export default function AiConsulting() {
                   <div className="w-3 h-3 bg-amber-400 mb-4" />
                   <h3 className="font-display text-lg font-semibold text-white mb-3">{g.title}</h3>
                   <p className="text-gray-300 text-sm leading-relaxed">{g.text}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Integrations */}
+          <section className="mb-24">
+            <h2 className="font-display text-3xl font-semibold tracking-tight text-amber-400 mb-3 text-center">
+              Works with what you already use
+            </h2>
+            <p className="text-gray-300 text-center max-w-2xl mx-auto mb-10">
+              Automation is only useful where your work already lives. These are common ones; anything with
+              an API can be connected.
+            </p>
+            <ul className="flex flex-wrap justify-center gap-3">
+              {integrations.map((it) => (
+                <li
+                  key={it.name}
+                  className="flex items-center gap-2.5 px-4 py-2.5 bg-[#140a03] border border-amber-500/40 text-amber-300"
+                >
+                  {it.path ? (
+                    <svg aria-hidden="true" viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
+                      <path d={it.path} />
+                    </svg>
+                  ) : (
+                    <span aria-hidden="true" className="w-2 h-2 bg-amber-400" />
+                  )}
+                  <span className="font-mono text-sm">{it.name}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* Data, ownership, hosting, support */}
+          <section className="mb-24">
+            <h2 className="font-display text-3xl font-semibold tracking-tight text-amber-400 mb-10 text-center">
+              Your data, your code
+            </h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              {terms.map((t) => (
+                <div
+                  key={t.title}
+                  className="p-6 bg-black/20 backdrop-blur-sm rounded-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all duration-300"
+                >
+                  <h3 className="font-display text-xl font-semibold text-white mb-3">{t.title}</h3>
+                  <p className="text-gray-300 leading-relaxed">{t.text}</p>
                 </div>
               ))}
             </div>
@@ -256,14 +411,36 @@ export default function AiConsulting() {
             </div>
           </section>
 
-          {/* CTA */}
-          <section className="text-center">
-            <p className="text-gray-300 mb-6 max-w-xl mx-auto">
-              Have a process that eats hours every week? Tell me what it is and I&apos;ll tell you what I&apos;d automate first.
-            </p>
-            <Link href="/contact" className="btn-crt">
-              Let&apos;s talk
-            </Link>
+          {/* First step */}
+          <section id="start" className="scroll-mt-28">
+            <div className="crt-panel">
+              <div className="crt-panel-cell !p-8 md:!p-12 text-center">
+                <p className="font-pixel text-amber-400 text-2xl tracking-widest uppercase mb-3">&gt; Where to start</p>
+                <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
+                  A consultation, <span className="text-amber-400">$300</span>
+                </h2>
+                <p className="text-amber-100/80 max-w-xl mx-auto mb-8 leading-relaxed">
+                  Tell me about the process that costs you the most time or goes wrong most often.
+                </p>
+                <ul className="grid sm:grid-cols-2 gap-px bg-amber-500/30 border border-amber-500/30 max-w-2xl mx-auto mb-10 text-left">
+                  <li className="bg-[#140a03] p-5">
+                    <div className="font-pixel text-xl uppercase tracking-wider text-amber-400 mb-1">One hour together</div>
+                    <p className="text-sm text-amber-100/70 leading-relaxed">
+                      A meet and greet where we walk through how the work gets done today.
+                    </p>
+                  </li>
+                  <li className="bg-[#140a03] p-5">
+                    <div className="font-pixel text-xl uppercase tracking-wider text-amber-400 mb-1">A plan you keep</div>
+                    <p className="text-sm text-amber-100/70 leading-relaxed">
+                      A written plan for what to automate and how. It is yours whether or not we work together.
+                    </p>
+                  </li>
+                </ul>
+                <Link href="/contact" className="btn-crt">
+                  Book a consultation
+                </Link>
+              </div>
+            </div>
           </section>
         </div>
       </main>
