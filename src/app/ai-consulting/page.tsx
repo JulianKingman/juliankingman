@@ -105,14 +105,14 @@ export default function AiConsulting() {
             </h1>
             <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
               I design and build AI automation flows that carry real work from request to result: agents that
-              are routed, checked, approved and accounted for. I run my own businesses on them.
+              are routed, checked, approved and accounted for. I build my own businesses on them.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link href="/contact" className="btn-crt">
                 Start a conversation
               </Link>
               <a href="#work" className="btn-crt btn-crt-ghost">
-                See it in production
+                See the work
               </a>
             </div>
           </section>
@@ -158,10 +158,10 @@ export default function AiConsulting() {
           {/* Case studies */}
           <section id="work" className="mb-24 scroll-mt-28">
             <h2 className="font-display text-3xl font-semibold tracking-tight text-amber-400 mb-3 text-center">
-              Running in production
+              From my own work
             </h2>
             <p className="text-gray-300 text-center max-w-2xl mx-auto mb-10">
-              These are systems I designed, built and operate.
+              Systems I have designed and built.
             </p>
             <div className="space-y-8">
               {cases.map((c) => (
