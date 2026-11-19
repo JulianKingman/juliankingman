@@ -6,7 +6,7 @@ import { MetatronsCube } from "@/components/sacred-geometry";
 export const metadata: Metadata = {
   title: "AI Consulting — Julian Kingman",
   description:
-    "AI automation flows that run real work: agent pipelines with intake, routing, checks, human approval and a cost ledger.",
+    "AI automation flows that run real work: agent pipelines with intake, routing, verification, human approval and a cost ledger.",
 };
 
 const flow = [
@@ -34,6 +34,33 @@ const services = [
   {
     title: "Cost and failure visibility",
     text: "Per-job spend, alerts when a run fails or stalls, and no silent dead ends. You always know what the system did and what it cost.",
+  },
+];
+
+const safeguards = [
+  {
+    title: "Verified, not self-reported",
+    text: "A model saying the job is done proves nothing. Output is checked by something that isn't the model: tests, validators, measurements against the source material.",
+  },
+  {
+    title: "Least privilege",
+    text: "Each agent gets only the instructions, tools and secrets for the job in front of it. One client's agent cannot read another client's data, because it was never handed it.",
+  },
+  {
+    title: "Untrusted input stays untrusted",
+    text: "Email, uploads and web pages are data, not instructions. Senders are authenticated, and anything unknown or forged is held for a person instead of reaching an agent.",
+  },
+  {
+    title: "Approval before anything irreversible",
+    text: "Publishing, sending to a customer and spending money pass a human gate sized to the risk. Low-risk work flows through; high-risk work waits.",
+  },
+  {
+    title: "Budgets and an audit trail",
+    text: "Every agent runs under a spend limit, and every run is logged with what it did, what it cost and who approved it.",
+  },
+  {
+    title: "Fail loudly",
+    text: "No silent fallbacks and no made-up results. A run that fails or stalls raises an alert and tells the customer the truth about where things stand.",
   },
 ];
 
@@ -150,6 +177,29 @@ export default function AiConsulting() {
                 >
                   <h3 className="font-display text-xl font-semibold text-white mb-3">{s.title}</h3>
                   <p className="text-gray-300 leading-relaxed">{s.text}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Verification and safety */}
+          <section className="mb-24">
+            <h2 className="font-display text-3xl font-semibold tracking-tight text-amber-400 mb-3 text-center">
+              Verification and safety
+            </h2>
+            <p className="text-gray-300 text-center max-w-2xl mx-auto mb-10">
+              Getting an agent to do something is the easy part. Knowing it did the right thing, and limiting
+              the damage when it doesn&apos;t, is most of the engineering.
+            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {safeguards.map((g) => (
+                <div
+                  key={g.title}
+                  className="p-6 bg-black/20 backdrop-blur-sm rounded-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all duration-300"
+                >
+                  <div className="w-3 h-3 bg-amber-400 mb-4" />
+                  <h3 className="font-display text-lg font-semibold text-white mb-3">{g.title}</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed">{g.text}</p>
                 </div>
               ))}
             </div>
