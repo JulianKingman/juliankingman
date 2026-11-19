@@ -51,6 +51,17 @@ const projects: Project[] = [
     githubUrl: null
   },
   {
+    id: 6,
+    title: "Underdragon Games",
+    role: "Founder & Game Developer",
+    description: "A small independent game studio. Its projects include Nightmare Fuel, a shared-board strategy card game on a hex grid where every colour is a direction, and Belay Quest, a pixel-art app for finding your climbing party.",
+    tech: ["TypeScript", "React", "boardgame.io", "Vite", "Game design"],
+    image: "/projects/UnderdragonGames.jpg",
+    color: "from-amber-500 to-red-700",
+    liveUrl: "https://underdragongames.com",
+    githubUrl: "https://github.com/UnderdragonGames"
+  },
+  {
     id: 4,
     title: "Giving Universe",
     role: "Full-Stack Web3 Developer",

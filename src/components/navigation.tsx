@@ -12,6 +12,7 @@ const Navigation = () => {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Projects', path: '/projects' },
+    { name: 'AI Consulting', path: '/ai-consulting' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -44,7 +45,7 @@ const Navigation = () => {
             </Link>
             
             {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden md:flex space-x-4 lg:space-x-8">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
