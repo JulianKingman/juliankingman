@@ -19,6 +19,39 @@ const projects: Project[] = [
   },
   {
     id: 1,
+    title: "Mini Brick Home",
+    role: "Founder & Full-Stack Developer",
+    description: "Custom brick-built models of real houses, designed from photos and made in small weekly batches. Each set ships with an instruction book made for that house alone — for a first home, the house you grew up in, or clients at closing.",
+    tech: ["Next.js", "TypeScript", "Convex", "Tailwind", "Railway"],
+    image: "/projects/MiniBrickHome.jpg",
+    color: "from-yellow-400 to-amber-600",
+    liveUrl: "https://minibrickhome.com",
+    githubUrl: null
+  },
+  {
+    id: 2,
+    title: "Belay Quest",
+    role: "Mobile Developer & Designer",
+    description: "Find your climbing party. A lightweight, intent-based coordination app for rock climbers with a pixel-art RPG soul: share a plan, not your location. Anonymous by default, with generated climbing names, XP and levels instead of photos and profiles.",
+    tech: ["Expo", "React Native", "TypeScript", "Convex", "Pixel art"],
+    image: "/projects/BelayQuest.jpg",
+    color: "from-orange-400 to-amber-600",
+    liveUrl: "https://belay.quest",
+    githubUrl: "https://github.com/UnderdragonGames/BelayQuest"
+  },
+  {
+    id: 3,
+    title: "Consult Ants",
+    role: "Founder & Developer",
+    description: "Big help for tiny businesses. A digital agency that builds websites for very small businesses and keeps them updated, at prices a tiny business can actually afford.",
+    tech: ["Astro", "TypeScript", "Tailwind", "Railway"],
+    image: "/projects/ConsultAnts.jpg",
+    color: "from-amber-300 to-orange-500",
+    liveUrl: "https://consult-ants.love",
+    githubUrl: null
+  },
+  {
+    id: 4,
     title: "Giving Universe",
     role: "Full-Stack Web3 Developer",
     description: "A comprehensive blockchain platform for charitable giving and impact tracking. Built as a monorepo with multiple applications supporting various blockchain networks for transparent donation management.",
@@ -29,7 +62,7 @@ const projects: Project[] = [
     githubUrl: "https://github.com/CollaborativeEconomics/monorepo"
   },
   {
-    id: 2,
+    id: 5,
     title: "Clipboard.fitness",
     role: "Full-Stack Developer",
     description: "A modern training management platform for personal trainers. Features drag-and-drop program building, visual progress tracking, and comprehensive session management tools.",
@@ -38,17 +71,6 @@ const projects: Project[] = [
     color: "from-orange-400 to-amber-600",
     liveUrl: "https://www.clipboard.fitness",
     githubUrl: null
-  },
-  {
-    id: 3,
-    title: "Allo Yeeter",
-    role: "Web3 Developer",
-    description: "A fund distribution tool built with the Allo protocol for public goods funding. Enables efficient allocation and distribution of resources within the Web3 ecosystem.",
-    tech: ["TypeScript", "React", "Solidity", "Ethereum", "Allo Protocol", "DeFi"],
-    image: "/projects/Yeeter.jpg",
-    color: "from-amber-500 to-red-700",
-    liveUrl: "https://allo-yeeter.vercel.app",
-    githubUrl: "https://github.com/greenpill-dev-guild/allo-yeeter"
   }
 ];
 

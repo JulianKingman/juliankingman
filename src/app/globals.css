@@ -562,3 +562,48 @@ html {
     stroke-dashoffset: 0;
   }
 }
+
+/* Link cards (contact page): the ghost button, laid out as icon + two lines */
+.btn-crt-card {
+  justify-content: flex-start;
+  gap: 1rem;
+  min-width: 280px;
+  padding: 1rem 1.5rem;
+  text-align: left;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.btn-crt-card::before {
+  content: none;
+}
+
+.btn-crt-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  color: #1f0f04;
+  background: #ffb000;
+}
+
+.btn-crt-card:hover .btn-crt-card-icon {
+  color: #ffb000;
+  background: #1f0f04;
+}
+
+.btn-crt-card-label {
+  font-size: 1.5rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.btn-crt-card-detail {
+  margin-top: 0.25rem;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.8125rem;
+  opacity: 0.75;
+  text-shadow: none;
+}
