@@ -6,6 +6,39 @@ import AnimatedBackground from "@/components/animated-background";
 
 const projects: Project[] = [
   {
+    id: 1,
+    title: "Mini Brick Home",
+    role: "Founder & Full-Stack Developer",
+    description: "Custom brick-built models of real houses, designed from photos and made in small weekly batches. Each set ships with an instruction book made for that house alone — for a first home, the house you grew up in, or clients at closing.",
+    tech: ["Next.js", "TypeScript", "Convex", "Tailwind", "Railway"],
+    image: "/projects/MiniBrickHome.jpg",
+    color: "from-yellow-400 to-amber-600",
+    liveUrl: "https://minibrickhome.com",
+    githubUrl: null
+  },
+  {
+    id: 7,
+    title: "Lucid Box",
+    role: "Founder & Developer",
+    description: "A walk-up AI photo booth. Step in, and about thirty seconds later you have been reimagined in the style you picked, printed and in your hand before you leave. Behind it, a camera-to-print pipeline runs ComfyUI workflows on GPUs.",
+    tech: ["ComfyUI", "Next.js", "Convex", "Docker", "Railway"],
+    image: "/projects/LucidBox.jpg",
+    color: "from-amber-300 to-orange-500",
+    liveUrl: "https://lucidbox.ai",
+    githubUrl: null
+  },
+  {
+    id: 6,
+    title: "Underdragon Games",
+    role: "Digital Assets & Prototyping",
+    description: "An independent board game studio. Its first title, Out To Get You, is a fast, strategic card game for 3 to 12 players who play as villains with secret plans and secret powers. I coordinate digital assets and build playable prototypes of its games.",
+    tech: ["Board games", "Game design", "TypeScript", "React", "boardgame.io"],
+    image: "/projects/UnderdragonGames.jpg",
+    color: "from-amber-500 to-red-700",
+    liveUrl: "https://underdragongames.com",
+    githubUrl: "https://github.com/UnderdragonGames"
+  },
+  {
     id: 0,
     title: "Dream Locket",
     role: "Solo iOS Developer & Designer",
@@ -16,17 +49,6 @@ const projects: Project[] = [
     liveUrl: "/dream-locket",
     githubUrl: null,
     internalUrl: "/dream-locket",
-  },
-  {
-    id: 1,
-    title: "Mini Brick Home",
-    role: "Founder & Full-Stack Developer",
-    description: "Custom brick-built models of real houses, designed from photos and made in small weekly batches. Each set ships with an instruction book made for that house alone — for a first home, the house you grew up in, or clients at closing.",
-    tech: ["Next.js", "TypeScript", "Convex", "Tailwind", "Railway"],
-    image: "/projects/MiniBrickHome.jpg",
-    color: "from-yellow-400 to-amber-600",
-    liveUrl: "https://minibrickhome.com",
-    githubUrl: null
   },
   {
     id: 2,
@@ -49,28 +71,6 @@ const projects: Project[] = [
     color: "from-amber-300 to-orange-500",
     liveUrl: "https://consult-ants.love",
     githubUrl: null
-  },
-  {
-    id: 7,
-    title: "Lucid Box",
-    role: "Founder & Developer",
-    description: "A camera-to-screen AI image pipeline. Photos captured on a tethered camera go to an orchestrator, are transformed by ComfyUI workflows running on GPUs, and appear on a live display, with an admin console to run it all.",
-    tech: ["ComfyUI", "Next.js", "Convex", "Docker", "Railway"],
-    image: "/projects/LucidBox.jpg",
-    color: "from-amber-300 to-orange-500",
-    liveUrl: "https://lucidbox.ai",
-    githubUrl: null
-  },
-  {
-    id: 6,
-    title: "Underdragon Games",
-    role: "Founder & Game Developer",
-    description: "A small independent game studio. Its projects include Nightmare Fuel, a shared-board strategy card game on a hex grid where every colour is a direction, and Belay Quest, a pixel-art app for finding your climbing party.",
-    tech: ["TypeScript", "React", "boardgame.io", "Vite", "Game design"],
-    image: "/projects/UnderdragonGames.jpg",
-    color: "from-amber-500 to-red-700",
-    liveUrl: "https://underdragongames.com",
-    githubUrl: "https://github.com/UnderdragonGames"
   },
   {
     id: 4,
@@ -154,7 +154,7 @@ export default function Projects() {
 
                   {/* Content */}
                   <div className="relative z-10">
-                    <div className="mb-4 h-48 rounded-lg overflow-hidden bg-black/30">
+                    <div className="mb-4 aspect-[16/10] rounded-lg overflow-hidden bg-black/30">
                       <img
                         src={project.image}
                         alt={project.title}
@@ -230,11 +230,11 @@ export default function Projects() {
               </button>
             </div>
 
-            <div className="mb-6 h-48 rounded-lg overflow-hidden">
+            <div className="mb-6 aspect-[16/10] rounded-lg overflow-hidden">
               <img 
                 src={selectedProject.image} 
                 alt={selectedProject.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-top"
               />
             </div>
             
