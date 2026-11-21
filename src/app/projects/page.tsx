@@ -51,6 +51,17 @@ const projects: Project[] = [
     githubUrl: null
   },
   {
+    id: 7,
+    title: "Lucid Box",
+    role: "Founder & Developer",
+    description: "A camera-to-screen AI image pipeline. Photos captured on a tethered camera go to an orchestrator, are transformed by ComfyUI workflows running on GPUs, and appear on a live display, with an admin console to run it all.",
+    tech: ["ComfyUI", "Next.js", "Convex", "Docker", "Railway"],
+    image: "/projects/LucidBox.jpg",
+    color: "from-amber-300 to-orange-500",
+    liveUrl: "https://lucidbox.ai",
+    githubUrl: null
+  },
+  {
     id: 6,
     title: "Underdragon Games",
     role: "Founder & Game Developer",
